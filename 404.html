@@ -1,0 +1,42 @@
+---
+permalink: /404.html
+---
+
+<!doctype html>
+<html>
+	<head>
+	<title>Diana's Dream</title>
+    <script src="/public/redirects.js"></script>
+	<script>
+	window.onload = function () {
+		try {
+			var isNavbar = false;
+			var isRedirect = false;
+			var redirectLink = "";
+			var s = window.location.href;
+			var hash = s.substring(s.lastIndexOf('/') + 1, s.length).toLowerCase();
+
+			var redirects = getRedirects();
+			for(var i = 0; i < redirects.length; i++) {
+				if (hash === redirects[i].name) {
+					isRedirect = true;
+					redirectLink = redirects[i].link;
+				}
+			}
+
+			if (isRedirect) {
+				window.location = redirectLink;
+			}
+			else {
+				window.location = "https://dianasdream.com/";
+			}
+		} catch (e) {
+			window.location = "https://dianasdream.com/";
+		}
+	}
+	</script>
+	</head>
+	<body style="font-size: 14px; font-family: monospace;">
+		Redirecting...
+	</body>
+</html>
